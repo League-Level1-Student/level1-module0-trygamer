@@ -41,17 +41,36 @@ initializeGui();
 			
 			// 5. Check their answer. If they guessed correctly:
 			// -- Tell them they are right and increase the score by 1
-
+if(guess.equals("arnold")) {
+	JOptionPane.showMessageDialog(null, "You are right!");
+	score += 1;
+}
 			// 6. Otherwise:
 			// -- Tell them they are wrong and who the person is
-
+else { JOptionPane.showMessageDialog(null, "You are wrong it is arnold!");}
 			// 7. Use the showNextImage() method below to get the next image
 			showNextImage();
 		    // 8. Show them their current score
-			
+			JOptionPane.showConfirmDialog(null, "Your score is "+ score);
 			// 9. .... repeat for all your images.....
 
+				
+				// 4. Ask the user who this person is and store their answer
 
+				
+				// 5. Check their answer. If they guessed correctly:
+				// -- Tell them they are right and increase the score by 1
+	if(guess.equals("arnold")) {
+		JOptionPane.showMessageDialog(null, "You are right!");
+		score += 1;
+	}
+				// 6. Otherwise:
+				// -- Tell them they are wrong and who the person is
+	else { JOptionPane.showMessageDialog(null, "You are wrong it is arnold!");}
+				// 7. Use the showNextImage() method below to get the next image
+				showNextImage();
+			    // 8. Show them their current score
+				JOptionPane.showConfirmDialog(null, "Your score is "+ score);
 		}
 
 	}
