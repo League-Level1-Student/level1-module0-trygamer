@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 public class DrumKit extends MouseAdapter {
 
 	JLabel drumLabelWithImage;
+	
+	JLabel drum;
 
 	public static void main(String[] args) throws Exception {
 		new DrumKit().getGoing();
@@ -34,7 +36,7 @@ public class DrumKit extends MouseAdapter {
 		// 3. Set the size of the frame
 		f.setSize(500, 500);
 		// 4. Set the title of the frame
-		f.setTitle("Roblox Kit");
+		f.setTitle("Drum Kit");
 		// 5. Make a JPanel and initialize it.
 		JPanel p = new JPanel();
 		// 6. Add the panel to the frame. (The panel is invisible.)
@@ -42,19 +44,22 @@ public class DrumKit extends MouseAdapter {
 		// 7. Download an image of a drum from the Internet. Drop it into your Eclipse
 		// project under "default package".
 		// 8. Put the name of your image in a String variable.
-		String dead = "oof";
+String title= "snare.jpg";
 
 		// 9. Edit the next line to use your String variable
 		// drumLabelWithImage = createLabelImage(drumImageString);
-		drumLabelWithImage = createLabelImage("download.jpg");
+		drumLabelWithImage = createLabelImage("snare.jpg");
+		drum = createLabelImage("cymbal.jpg");
 		// 10. Add the image to the panel
 		p.add(drumLabelWithImage);
+		p.add(drum);
 		// 11. Set the layout of the panel to "new GridLayout()"
 		p.setLayout(new GridLayout());
 		// 12. call the pack() method on the frame
 		f.pack();
 		// 13. add a mouse listener to drumLabelWithImage.
 		drumLabelWithImage.addMouseListener(this);
+		drum.addMouseListener(this);
 
 	}
 
@@ -62,21 +67,39 @@ public class DrumKit extends MouseAdapter {
 		// 14. When the mouse is clicked, print "mouse clicked"
 
 		System.out.println("mouse clicked");
-		playSound("oofer.mp3");
+
 		JLabel drumClicked = (JLabel) e.getSource();
-		// 15. Download a drum sound and drop it into your "default package". You can
+		
+		if(drumClicked==drumLabelWithImage) {
+			
+			playSound("drum.wav");
+		}
+		else if(drumClicked==drum) {
+			
+			playSound("cymbal.wav");
+			
+		}
+		
+		
+	}
+
+	
+	
+	// 15. Download a drum sound and drop it into your "default package". You can
 		// find it on freesound.org. To download it, log in as
 		// leagueofamazing/code4life.
 
 		// 16. If they clicked on the drumImage...
-		if (drumLabelWithImage.equals(drumClicked)) {
-
-		}
+		
 		// 17. ...use the playSound method to play a drum sound.
 
 		// 18. Add more images to make a drumkit. Remember to add a mouse listener to
 		// each one.
-	}
+		
+		
+		
+	
+	
 
 	private JLabel createLabelImage(String fileName) throws MalformedURLException {
 		URL imageURL = getClass().getResource(fileName);
