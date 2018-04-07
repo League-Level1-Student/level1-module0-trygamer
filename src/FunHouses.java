@@ -4,61 +4,33 @@ import javax.swing.JOptionPane;
 import org.jointheleague.graphical.robot.Robot;
 
 public class FunHouses {
+	static DrawHouse j = new DrawHouse();
 	static Robot h = new Robot();
-	static String v = JOptionPane.showInputDialog("What sizes of houses do you want (small, meduim, large)?");
-	static String c = JOptionPane.showInputDialog("What color do you want your houses (green, red, blue)?");
+	static String r;
+	static String v;
+	static String c;
 
 	public static void main(String[] args) {
 		int n = 0;
+		r = JOptionPane.showInputDialog(" Do you want peak houses or flat houses(peak or flat)?");
+		v = JOptionPane.showInputDialog("What sizes of houses do you want (small, meduim, large)?");
+		c = JOptionPane.showInputDialog("What color do you want your houses (green, red, blue)?");
 		h.miniaturize();
 		h.setSpeed(1000);
 		h.moveTo(50, 500);
-		for (int i = 0; i < 10; i++) {
-			flatHouse(n);
+		if (r.equals("flat")) {
+
+			for (int i = 0; i < 10; i++) {
+				j.flatHouse(n, h, v, c);
+			}
+		}
+
+		else if (r.equals("peak")) {
+
+			for (int i = 0; i < 10; i++) {
+
+				j.peakHouse(n, h, v, c);
+			}
 		}
 	}
-
-	public static void flatHouse(int n) {
-
-		String s = "small";
-		String m = "meduim";
-		String l = "large";
-
-		if (v.equals(s)) {
-			n = 60;
-		} else if (v.equals(m)) {
-			n = 120;
-		} else if (v.equals(l)) {
-			n = 250;
-		}
-
-		String g = "green";
-
-		String r = "red";
-
-		String b = "blue";
-
-		if (c.equals(g)) {
-			h.setPenColor(0, 255, 0);
-		} else if (c.equals(r)) {
-			h.setPenColor(255, 0, 0);
-		} else if (c.equals(b)) {
-			h.setPenColor(0, 0, 255);
-		}
-
-		h.setSpeed(10);
-		h.penDown();
-
-		h.move(n);
-		h.turn(90);
-		h.move(30);
-		h.turn(90);
-		h.move(n);
-		h.turn(-90);
-		h.setPenColor(0, 255, 0);
-		h.move(20);
-		h.turn(-90);
-
-	}
-
 }
